@@ -13,24 +13,25 @@
 	$email    = $_POST['email_login'];	
 	$password = $_POST['password_login'];
 	
-	#Encrypt password with PHP 5.5
-	$password = password_hash($password, PASSWORD_BCRYPT);
+	#Salt is the hashed password
+	$salt = mysql_query("SELECT password
+	                     FROM User_Login
+	                     WHERE email = '$email';");
 	
+	#Encrypt password with PHP 5.0. The crypt function will return the value of $salt if the password is correct.
+	$password = crypt($password, $salt);
 	
-	#Perform seperate queries to give specific error messages,
-	#Prepare statements using PHP Data Objects to prevent SQL injection
-  	$stm = $dbh->prepare("SELECT * 
-	                      FROM User_Login 
-	                      WHERE email    = ?;");
-                    	     
-	$stm->execute($email); 
-    
-	$sql_em = $stm->fetch();
+	/*TODO: Prevent SQL injections. Is there a way to prepare statements in PHP 5.0?*/
+	
+	#Query the database with the input for a match.
+  	$sql_em = mysql_query("SELECT * 
+	                       FROM User_Login 
+	                       WHERE email    = ?;");
                             
-  	$stm    = $dbh->prepare("SELECT * 
-				 FROM User_Login 
-				 WHERE email    = ? and
-				 password = ?;");
+  	$sql    = mysql_query("SELECT * 
+  	                       FROM User_Login 
+	                       WHERE email    = ? and
+	                       password = ?;");
     
 	$stm->execute(array($email, $password));
                                    
