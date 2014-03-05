@@ -14,44 +14,28 @@
 	$password = $_POST['password_login'];
 	
 	#Salt is the hashed password
-	$salt = mysql_query("SELECT password
+	$salt = mysql_query("SELECT pwd
 	                     FROM User_Login
 	                     WHERE email = '$email';");
+	
+	#Check to see if the email was found in the database.                     
+	if(!$salt){
+	    echo json_encode(-2);		
+	}
 	
 	#Encrypt password with PHP 5.0. The crypt function will return the value of $salt if the password is correct.
 	$password = crypt($password, $salt);
 	
 	/*TODO: Prevent SQL injections. Is there a way to prepare statements in PHP 5.0?*/
 	
-	#Query the database with the input for a match.
-  	$sql_em = mysql_query("SELECT * 
-	                       FROM User_Login 
-	                       WHERE email    = ?;");
-                            
-  	$sql    = mysql_query("SELECT * 
-  	                       FROM User_Login 
-	                       WHERE email    = ? and
-	                       password = ?;");
-    
-	$stm->execute(array($email, $password));
-                                   
-	$sql = stm->fetch();
-	
-	$numRows_em = mysql_size($sql_em);
-  	$numRows    = mysql_size($sql);
-	
-	#Return 0 for correct email and password, -1 for incorrect email, 
-	#and -2 for incorrect password.
-	if($numRows>0){
-		echo json_encode(0);
+	#If the password matches the hashed password, the login was sucessful.
+	if($password = $salt){
+	    echo json_encode(0);	
 	}
 	
-	else if($numRows_em == 0){
-		echo json_encode(-1);
-	}
-
+	#Else, the password is incorrect.
 	else{
-		echo json_encode(-2);
+	    echo json_encode(-2);		
 	}
 	
 	mysql_close();
