@@ -20,21 +20,21 @@
 	#Perform seperate queries to give specific error messages,
 	#Prepare statements using PHP Data Objects to prevent SQL injection
   	$stm = $dbh->prepare("SELECT * 
-                    	  FROM User_Login 
-                    	  WHERE email    = ?;");
+	                      FROM User_Login 
+	                      WHERE email    = ?;");
                     	     
-    $stm->execute($email); 
+	$stm->execute($email); 
     
-    $sql_em = $stm->fetch();
+	$sql_em = $stm->fetch();
                             
   	$stm    = $dbh->prepare("SELECT * 
-                		     FROM User_Login 
-                		     WHERE email    = ? and
-                                   password = ?;");
+				 FROM User_Login 
+				 WHERE email    = ? and
+				 password = ?;");
     
-    $stm->execute(array($email, $password));
+	$stm->execute(array($email, $password));
                                    
-    $sql = stm->fetch();
+	$sql = stm->fetch();
 	
 	$numRows_em = mysql_size($sql_em);
   	$numRows    = mysql_size($sql);
