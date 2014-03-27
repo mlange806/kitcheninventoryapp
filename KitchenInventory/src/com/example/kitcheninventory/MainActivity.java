@@ -1,5 +1,5 @@
 package com.example.kitcheninventory;
-//This is a test comment for commit purposes2
+//This is a test comment for commit purposes
 
 import java.io.IOException;
 import java.util.ArrayList;
