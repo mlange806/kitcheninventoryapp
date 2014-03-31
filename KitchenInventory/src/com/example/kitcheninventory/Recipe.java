@@ -18,7 +18,12 @@ public class Recipe {
     private String description;
     private String instructions;
     
-    private Recipe(String name, String description, String instructions){	
+    public Recipe(String name, String instructions){
+    	this.name         = name;
+    	this.instructions = instructions;
+    }
+    
+    public Recipe(String name, String description, String instructions){	
     	this.name         = name;
     	this.description  = description;
     	this.instructions = instructions;

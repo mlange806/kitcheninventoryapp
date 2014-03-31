@@ -25,6 +25,10 @@
             android:name="com.example.kitcheninventory.RegisterActivity"
             android:label="@string/title_activity_register" >
         </activity>
+        <activity
+            android:name="com.example.kitcheninventory.ViewRecipes"
+            android:label="@string/title_activity_view_recipes">
+        </activity>
     </application>
 
 </manifest>

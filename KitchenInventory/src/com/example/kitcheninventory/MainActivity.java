@@ -79,9 +79,11 @@ public class MainActivity extends Activity implements OnClickListener{
 			
 			switch(Integer.parseInt(errorCode))
 			{
-			case 0: Log.w("Success", errorCode);break;
+			case 0: Log.w("Success", errorCode);
+			        //TO-DO call retrieve data.php
+			        break;
 			case -1: Log.w("Username is not found", errorCode);break;
-			case -2: Log.w("Incorrect Passwor", errorCode);break;
+			case -2: Log.w("Incorrect Password", errorCode);break;
 			case -99: Log.w("Cant establish the connection to databases", errorCode); break;
 			case -100: Log.w("Cant establish the connection to the website", errorCode); break;
 			}
