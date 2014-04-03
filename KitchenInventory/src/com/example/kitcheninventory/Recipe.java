@@ -3,14 +3,13 @@ package com.example.kitcheninventory;
 /**
  * Recipe Class
  * 
- * Objects for storing and retrieving information about a recipe.
+ * Object for storing and retrieving information about a recipe.
  * 
  * Instantiate with the three attributes name, description, and instructions.
  * Change attributes with setAttribute methods.
  * Return attributes with getAttribute methods.
  * 
  * Author: Mark Lange
- * 
 */
 public class Recipe {
 	
@@ -34,7 +33,12 @@ public class Recipe {
     }
     
     public String getDescription(){
-    	return this.description;
+    	if (this.description != "null") {
+    	    return this.description;
+    	}
+    	else{
+    		return "";
+    	}
     }
     
     public String getInstructions(){

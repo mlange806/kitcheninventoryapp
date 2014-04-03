@@ -10,9 +10,11 @@ import org.apache.http.ParseException;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -24,10 +26,14 @@ public class MainActivity extends Activity implements OnClickListener{
 	EditText etuser, etpass;
 	Button blogin, bregister;
 
+	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		Log.w("On Create","Main Activity has been created");
+		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+		StrictMode.setThreadPolicy(policy);
 		initialise();
 	}
 	private void initialise(){
@@ -59,29 +65,27 @@ public class MainActivity extends Activity implements OnClickListener{
 			kvPairs.add(new BasicNameValuePair("email_login", etuser.getText().toString()));
 			kvPairs.add(new BasicNameValuePair("password_login", etpass.getText().toString()));
 			kvPairs.add(new BasicNameValuePair("fromAndroid", "1"));
-			PhpCommunicator comms = new PhpCommunicator(script, kvPairs);
+			PhpCommunicator comms = new PhpCommunicator(script, kvPairs, v.getContext());
 			comms.runScript();
 			
 			String errorCode = "-100";
 			if(comms.getResponse() != null)
 			{
-				try {
-					errorCode = EntityUtils.toString(comms.getResponse().getEntity());
-				} catch (ParseException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				errorCode = comms.getResponse();
+				
 				Log.w("DEBUG", errorCode);
 			}
 			
 			switch(Integer.parseInt(errorCode))
 			{
 			case 0: Log.w("Success", errorCode);
-			        //TO-DO call retrieve data.php
-			        break;
+			
+				   Intent myIntent = new Intent(v.getContext(), ViewRecipe.class);
+				   myIntent.putExtra("email", etuser.getText().toString());
+			       startActivity(myIntent);
+			
+			       break;
+			        
 			case -1: Log.w("Username is not found", errorCode);break;
 			case -2: Log.w("Incorrect Password", errorCode);break;
 			case -99: Log.w("Cant establish the connection to databases", errorCode); break;

@@ -43,21 +43,13 @@ public class RegisterActivity extends Activity implements OnClickListener{
 				kvPairs.add(new BasicNameValuePair("reg_pwd1", pass.getText().toString()));
 				kvPairs.add(new BasicNameValuePair("reg_pwd2", cpass.getText().toString()));
 				kvPairs.add(new BasicNameValuePair("fromAndroid", "1"));
-				PhpCommunicator comms = new PhpCommunicator(script, kvPairs);
+				PhpCommunicator comms = new PhpCommunicator(script, kvPairs, v.getContext());
 				comms.runScript();
 				
 				String errorCode = "-100";
 				if(comms.getResponse() != null)
 				{
-					try {
-						errorCode = EntityUtils.toString(comms.getResponse().getEntity());
-					} catch (ParseException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+					errorCode = comms.getResponse();
 					Log.w("DEBUG", errorCode);
 				}
 				

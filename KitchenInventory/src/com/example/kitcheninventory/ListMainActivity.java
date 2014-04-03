@@ -35,7 +35,8 @@ public class ListMainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.list_main);
+		//TO BE IMPLEMENTED BY KY
+		//setContentView(R.layout.list_main);
 		String result="";
 		try {
 		HttpClient httpclient = new DefaultHttpClient();
@@ -73,8 +74,9 @@ public class ListMainActivity extends Activity {
 		catch(JSONException e){
 			Log.w("log_tag","Error" + e.toString());
 		}
-		ListView mylistview = (ListView) findViewById(R.id.listview);
-		aa=new Adapter();
+		//TO BE IMPLEMENTED BY KY
+		//ListView mylistview = (ListView) findViewById(R.id.listview);
+		///aa=new Adapter();
 		
 	}
 
@@ -82,7 +84,8 @@ public class ListMainActivity extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.list_main, menu);
+		//TO BE IMPLEMENTED BY KY
+		//getMenuInflater().inflate(R.menu.list_main, menu);
 		return true;
 	}
 
