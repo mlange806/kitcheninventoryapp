@@ -1,14 +1,10 @@
 package com.example.kitcheninventory;
-//This is a test comment for commit purposes
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.http.NameValuePair;
-import org.apache.http.ParseException;
 import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.util.EntityUtils;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -56,42 +52,49 @@ public class MainActivity extends Activity implements OnClickListener{
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
+	
 	@Override
-	
-		public void onClick(View v) {
-			// TODO Auto-generated method stub
-			String script = "http://www.treyyeager.com/php/Login.php";
-			List<NameValuePair> kvPairs = new ArrayList<NameValuePair>();
-			kvPairs.add(new BasicNameValuePair("email_login", etuser.getText().toString()));
-			kvPairs.add(new BasicNameValuePair("password_login", etpass.getText().toString()));
-			kvPairs.add(new BasicNameValuePair("fromAndroid", "1"));
-			PhpCommunicator comms = new PhpCommunicator(script, kvPairs, v.getContext());
-			comms.runScript();
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		String script = "http://www.treyyeager.com/php/Login.php";
+		List<NameValuePair> kvPairs = new ArrayList<NameValuePair>();
+		kvPairs.add(new BasicNameValuePair("email_login", etuser.getText().toString()));
+		kvPairs.add(new BasicNameValuePair("password_login", etpass.getText().toString()));
+		kvPairs.add(new BasicNameValuePair("fromAndroid", "1"));
+		PhpCommunicator comms = new PhpCommunicator(script, kvPairs, v.getContext());
+		comms.runScript();
+		
+		String errorCode = "-100";
+		if(comms.getResponse() != null)
+		{
+			errorCode = comms.getResponse();
 			
-			String errorCode = "-100";
-			if(comms.getResponse() != null)
-			{
-				errorCode = comms.getResponse();
-				
-				Log.w("DEBUG", errorCode);
-			}
-			
-			switch(Integer.parseInt(errorCode))
-			{
-			case 0: Log.w("Success", errorCode);
-			
-				   Intent myIntent = new Intent(v.getContext(), ViewRecipe.class);
-				   myIntent.putExtra("email", etuser.getText().toString());
-			       startActivity(myIntent);
-			
-			       break;
-			        
-			case -1: Log.w("Username is not found", errorCode);break;
-			case -2: Log.w("Incorrect Password", errorCode);break;
-			case -99: Log.w("Cant establish the connection to databases", errorCode); break;
-			case -100: Log.w("Cant establish the connection to the website", errorCode); break;
-			}
+			Log.w("DEBUG", errorCode);
 		}
-	
+		
+		switch(Integer.parseInt(errorCode))
+		{
+		case 0: Log.w("Success", errorCode);
+		
+			   Intent myIntent = new Intent(v.getContext(), MainMenuActivity.class);
+			   myIntent.putExtra("email", etuser.getText().toString());
+			   
+		       startActivity(myIntent);
+		
+		       break;
+		        
+		case -1: Log.w("Username is not found", errorCode);break;
+		case -2: Log.w("Incorrect Password", errorCode);break;
+		case -99: Log.w("Cant establish the connection to databases", errorCode); break;
+		case -100: Log.w("Cant establish the connection to the website", errorCode); break;
+		}
+		
+		
 	}
+	
+	
+	
+
+	
+}
 
