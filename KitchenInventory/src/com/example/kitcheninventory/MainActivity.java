@@ -55,7 +55,6 @@ public class MainActivity extends Activity implements OnClickListener{
 	
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
 		String script = "http://www.treyyeager.com/php/Login.php";
 		List<NameValuePair> kvPairs = new ArrayList<NameValuePair>();
 		kvPairs.add(new BasicNameValuePair("email_login", etuser.getText().toString()));

@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name">Kitchen Inventory</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_register">RegisterActivity</string>
     <string name="title_activity_view_recipes">ViewRecipe</string>
     <string name="title_activity_list">ListActivity</string>
     <string name="title_activity_mainmenu">MainMenuActivity</string>
+    <string name="title_activity_view_recipe_entry">ViewRecipeEntry</string>
+    <string name="title_activity_add_recipe">AddRecipe</string>
+    <string name="title_activity_add_items">AdditemsActivity</string>
+    <string name="title_activity_edit_item">EdititemsActivity</string>
 </resources>

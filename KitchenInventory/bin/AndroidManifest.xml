@@ -46,6 +46,21 @@
             android:name=".ToActivity"
             android:label="@string/app_name">          
        </activity>
+       <activity
+            android:name="com.example.kitcheninventory.ViewRecipeEntry"
+            android:label="@string/title_activity_view_recipe_entry">          
+       </activity>
+       <activity
+            android:name="com.example.kitcheninventory.AddRecipe"
+            android:label="@string/title_activity_add_recipe">          
+       </activity>
+       <activity
+            android:name="com.example.kitcheninventory.AdditemsActivity"
+            android:label="@string/title_activity_add_items">          
+       </activity>
+       <activity
+            android:name="com.example.kitcheninventory.EdititemsActivity"
+            android:label="@string/title_activity_edit_item">          
+       </activity>
     </application>
-
 </manifest>
