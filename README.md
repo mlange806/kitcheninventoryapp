@@ -9,7 +9,7 @@ Andorid app that tracks kitchen inventory.
 4. Plug in your Android device.
 5. Under your phone's settings, enable "USB debugging".
 5. Under file, choose import.
-6. Select the "Android" folder provided in this zip file.
+6. Select the "kitcheninventoryapp" folder provided in the zip file.
 7. Press the play button on the top toolbar.
 8. When prompted, choose your device on the window.
 9. The program is now running on your Android device.
