@@ -27,4 +27,4 @@ To run the android version
 9. The program is now running on your Android device
 * The code for the android version is in the Android folder and uses the PHP Scripts as well
 
-#NOTE: The program will not run properly in Emulator mode because it cannot access the web.
+NOTE: The program will not run properly in Emulator mode because it cannot access the web.
