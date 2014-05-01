@@ -85,7 +85,7 @@ public class ViewRecipeEntry extends Activity {
     
     //Store needed arguments as kvPairs
     List<NameValuePair> kvPairs = new ArrayList<NameValuePair>();
-    kvPairs.add(new BasicNameValuePair("userid", userid));
+    kvPairs.add(new BasicNameValuePair("userid", "2"));
     kvPairs.add(new BasicNameValuePair("type", "recipe"));
     kvPairs.add(new BasicNameValuePair("id", id));
     kvPairs.add(new BasicNameValuePair("name", nName));
@@ -104,7 +104,7 @@ public class ViewRecipeEntry extends Activity {
   private void deleteRecipe(){
     //Store needed arguments as kvPairs
     List<NameValuePair> kvPairs = new ArrayList<NameValuePair>();
-    kvPairs.add(new BasicNameValuePair("user_id", userid));
+    kvPairs.add(new BasicNameValuePair("user_id", "2"));
     kvPairs.add(new BasicNameValuePair("id", id));
     kvPairs.add(new BasicNameValuePair("type", "recipe"));
     kvPairs.add(new BasicNameValuePair("fromAndroid", "1"));    

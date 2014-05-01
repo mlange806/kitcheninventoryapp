@@ -60,7 +60,7 @@ public class EdititemsActivity extends Activity {
 		kvPairs.add(new BasicNameValuePair("count", ncount));
 		kvPairs.add(new BasicNameValuePair("type", "ITEM"));
 		kvPairs.add(new BasicNameValuePair("fromAndroid", "1"));
-		kvPairs.add(new BasicNameValuePair("userid", userid));
+		kvPairs.add(new BasicNameValuePair("userid", "2"));
 		
 		String script = "http://www.treyyeager.com/php/addObject.php";
 		PhpCommunicator comms = new PhpCommunicator(script, kvPairs, this);

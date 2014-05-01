@@ -54,7 +54,7 @@ public class AddRecipe extends Activity {
     
     //Store needed arguments as kvPairs
     List<NameValuePair> kvPairs = new ArrayList<NameValuePair>();
-    kvPairs.add(new BasicNameValuePair("userid", userid));
+    kvPairs.add(new BasicNameValuePair("userid", "2"));
     kvPairs.add(new BasicNameValuePair("type", "recipe"));
     kvPairs.add(new BasicNameValuePair("id", "null"));
     kvPairs.add(new BasicNameValuePair("name", sName));

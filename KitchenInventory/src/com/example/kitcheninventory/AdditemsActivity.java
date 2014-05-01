@@ -44,7 +44,7 @@ public class AdditemsActivity extends Activity implements OnClickListener{
 				kvPairs.add(new BasicNameValuePair("desc", des.getText().toString()));
 				kvPairs.add(new BasicNameValuePair("type", "ITEM"));
 				kvPairs.add(new BasicNameValuePair("fromAndroid", "1"));
-				kvPairs.add(new BasicNameValuePair("userid", userid));
+				kvPairs.add(new BasicNameValuePair("userid", "2"));
 				PhpCommunicator comms = new PhpCommunicator(script, kvPairs, v.getContext());
 				comms.runScript();
 			
