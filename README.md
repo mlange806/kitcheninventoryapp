@@ -1,7 +1,7 @@
 Kitchenineered
 ===================
 
-Andorid app that tracks kitchen inventory.
+Android app that tracks kitchen inventory.
 
 1. Go to http://developer.android.com/sdk/index.html
 2. Download the 32-bit version for your operating system.
